@@ -1,52 +1,60 @@
 ---
-import '../styles/global.css';
-
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="Portafolio web de Camilo Varon - Desarrollador Frontend" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@cavb1205" />
+    <meta name="twitter:creator" content="@cavb1205" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Portafolio web de Camilo Varon - Desarrollador Frontend" />
+    <meta property="og:image" content="/images/foto-camilo-varon.webp" />
+    <meta property="og:url" content="https://camilovaron.dev" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  </head>
+  <body class="bg-dark min-h-screen">
+    <slot />
+    <Footer />
+  </body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --color-primary: #60a5fa;
+    --color-secondary: #a78bfa;
+    --color-accent: #2dd4bf;
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+  }
+
+  body {
+    background: theme("colors.dark.DEFAULT");
+  }
+
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
 </style>
