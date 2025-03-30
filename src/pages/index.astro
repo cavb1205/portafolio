@@ -3,6 +3,40 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Skills from "../components/Skills.astro";
 import Nav from "../components/Nav.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = [
+  {
+    title: "E-commerce RosaPastell",
+    description:
+      "Tienda online para la venta de pijamas creada con Woocomerce.",
+    image:
+      "/public/images/projects/rosapastell.webp",
+    url: "https://www.rosapastell.com/",
+    github: "#",
+    tags: ["Wordpress", "WooCommerce", "Postgres", "Digital Ocean"],
+  },
+  {
+    title: "E-commerce DivaStore",
+    description:
+      "Frontend de un e-commerce creado con Next.js, TailwindCSS y API REST.",
+    image:
+      "/public/images/projects/divastore.webp",
+    url: "https://www.divastore.cl/",
+    github: "https://github.com/cavb1205/ecomerce-next",
+    tags: ["React", "Next.js", "TailwindCSS", "API REST", "Vercel"],
+  },
+  {
+    title: "Menu Comida Online",
+    description:
+      "Aplicación web en astro para mostrar el menu de un restaurante.",
+    image:
+      "/public/images/projects/stefyfood.webp",
+    url: "https://stefyfood.vercel.app/",
+    github: "https://github.com/cavb1205/carta-online",
+    tags: ["Astro", "Vercel", "API REST"],
+  },
+];
 ---
 
 <Layout title="Camilo Varon | Desarrollador Frontend">
@@ -11,20 +45,31 @@ import Nav from "../components/Nav.astro";
     <section id="inicio" class="py-8">
       <Header />
     </section>
-    
+
     <section id="habilidades" class="py-8">
       <Skills />
     </section>
-    
+
     <section id="proyectos" class="container mx-auto py-12">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-bold text-primary mb-2">Mis Proyectos</h2>
         <p class="text-secondary">Explora algunos de mis trabajos recientes</p>
       </div>
       <div class="max-w-5xl mx-auto px-4">
-        <p class="text-center text-gray-400">
-          Próximamente mostraremos aquí tus proyectos
-        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            projects.map((project) => (
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                url={project.url}
+                github={project.github}
+                tags={project.tags}
+              />
+            ))
+          }
+        </div>
       </div>
     </section>
 
