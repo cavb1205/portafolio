@@ -18,17 +18,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: { es: "E-commerce VM Store", en: "E-commerce VM Store" },
-    description: {
-      es: "Tienda de ropa urbana y gorras premium en Ibagué, Colombia.",
-      en: "Urban streetwear and premium caps store in Ibagué, Colombia.",
-    },
-    image: vmstore,
-    url: "https://www.vmstore.co/",
-    github: "#",
-    tags: ["Astro", "Tailwind CSS", "Vercel"],
-  },
-  {
     title: { es: "E-commerce RosaPastell", en: "E-commerce RosaPastell" },
     description: {
       es: "Tienda online para la venta de pijamas creada con WooCommerce.",
@@ -71,5 +60,16 @@ export const projects: Project[] = [
     url: "https://www.rigaproyectos.com/",
     github: "https://github.com/cavb1205/rigaproyectos",
     tags: ["Astro", "Vercel", "API REST"],
+  },
+  {
+    title: { es: "E-commerce VM Store", en: "E-commerce VM Store" },
+    description: {
+      es: "Tienda de ropa urbana y gorras premium en Ibagué, Colombia.",
+      en: "Urban streetwear and premium caps store in Ibagué, Colombia.",
+    },
+    image: vmstore,
+    url: "https://www.vmstore.co/",
+    github: "#",
+    tags: ["Astro", "Tailwind CSS", "Vercel"],
   },
 ];
