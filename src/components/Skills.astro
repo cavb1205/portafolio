@@ -1,5 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLang, useTranslations } from "../i18n/ui";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 
 const skills = [
   {
@@ -74,8 +78,8 @@ const skills = [
 
 <div class="container mx-auto py-4 px-4">
   <div class="text-center mb-10">
-    <h2 class="text-3xl font-bold text-primary mb-2">Mis Habilidades</h2>
-    <p class="text-secondary">Tecnologías con las que he trabajado</p>
+    <h2 class="text-3xl font-bold text-primary mb-2">{t("skills.title")}</h2>
+    <p class="text-secondary">{t("skills.subtitle")}</p>
   </div>
 
   <div

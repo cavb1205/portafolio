@@ -1,5 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLang, useTranslations } from "../i18n/ui";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 
 const currentYear = new Date().getFullYear();
 
@@ -32,7 +36,7 @@ const socialLinks = [
           <span class="text-white">Camilo Varón</span>
         </div>
         <p class="text-gray-400 text-sm text-center md:text-left">
-          © {currentYear} Camilo Varón. Todos los derechos reservados.
+          © {currentYear} Camilo Varón. {t("footer.rights")}
         </p>
       </div>
 
@@ -44,7 +48,7 @@ const socialLinks = [
             target="_blank" 
             rel="noopener noreferrer" 
             class="flex items-center justify-center w-10 h-10 bg-dark-lighter rounded-full text-gray-300 hover:text-primary hover:bg-opacity-80 transition-colors"
-            aria-label={`${link.name} (abre en una pestaña nueva)`}
+            aria-label={t("footer.social", { name: link.name })}
           >
             <Icon name={link.icon} class="text-xl" aria-hidden="true" />
           </a>
@@ -55,7 +59,7 @@ const socialLinks = [
     <!-- Mensaje adicional -->
     <div class="mt-6 text-center">
       <p class="text-gray-400 text-xs">
-        Desarrollado con <Icon name="ri:heart-fill" class="inline text-red-500 align-middle" aria-label="amor" /> usando Astro y Tailwind CSS
+        {t("footer.builtWith")} <Icon name="ri:heart-fill" class="inline text-red-500 align-middle" aria-label={t("footer.heart")} /> {t("footer.builtWith2")}
       </p>
     </div>
   </div>

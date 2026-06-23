@@ -1,5 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLang, useTranslations } from "../i18n/ui";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
 
 <section
@@ -18,7 +22,7 @@ import { Icon } from "astro-icon/components";
       <div class="p-1 bg-dark-lighter rounded-full shadow-md">
         <img
           src="/images/foto-camilo-varon.webp"
-          alt="Retrato de Camilo Varón, desarrollador frontend"
+          alt={t("photo.alt")}
           width="160"
           height="160"
           fetchpriority="high"
@@ -31,21 +35,24 @@ import { Icon } from "astro-icon/components";
           Camilo Andrés Varón
         </h1>
         <p class="text-secondary text-sm md:text-base">
-          Desarrollador Frontend · 📍 Chile
+          {t("hero.role")}
         </p>
       </div>
 
       <!-- Propuesta de valor -->
       <p class="text-gray-200 text-lg md:text-xl max-w-2xl text-balance">
-        Construyo <span class="text-accent font-semibold">tiendas online</span> y
-        <span class="text-accent font-semibold">aplicaciones web rápidas</span> con
-        <span class="text-primary font-semibold">React</span>,
-        <span class="text-primary font-semibold">Next.js</span> y
+        {t("hero.build")}{" "}
+        <span class="text-accent font-semibold">{t("hero.stores")}</span>{" "}
+        {t("hero.and")}{" "}
+        <span class="text-accent font-semibold">{t("hero.apps")}</span>{" "}
+        {t("hero.with")}{" "}
+        <span class="text-primary font-semibold">React</span>,{" "}
+        <span class="text-primary font-semibold">Next.js</span>{" "}
+        {t("hero.and")}{" "}
         <span class="text-primary font-semibold">Astro</span>.
       </p>
       <p class="text-gray-400 max-w-xl">
-        Transformo ideas en productos digitales cuidados, accesibles y listos
-        para vender.
+        {t("hero.subtitle")}
       </p>
 
       <!-- CTAs -->
@@ -57,14 +64,14 @@ import { Icon } from "astro-icon/components";
           class="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-dark-darker font-semibold py-3 px-6 rounded-md hover:bg-opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary/20"
         >
           <Icon name="ri:chat-smile-3-line" class="text-lg" aria-hidden="true" />
-          Hablemos de tu proyecto
+          {t("hero.ctaPrimary")}
         </a>
         <a
           href="#proyectos"
           class="flex-1 inline-flex items-center justify-center gap-2 border border-primary/50 text-primary font-semibold py-3 px-6 rounded-md hover:bg-primary/10 transition-all hover:-translate-y-1"
         >
           <Icon name="ri:folder-chart-line" class="text-lg" aria-hidden="true" />
-          Ver proyectos
+          {t("hero.ctaSecondary")}
         </a>
       </div>
 
@@ -74,7 +81,7 @@ import { Icon } from "astro-icon/components";
           href="https://www.linkedin.com/in/camilovaron/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Perfil de LinkedIn (abre en una pestaña nueva)"
+          aria-label={t("hero.linkedin")}
           class="flex items-center justify-center w-10 h-10 rounded-full bg-dark-lighter text-gray-300 hover:text-primary transition-colors"
         >
           <Icon name="ri:linkedin-box-fill" class="text-xl" aria-hidden="true" />
@@ -83,7 +90,7 @@ import { Icon } from "astro-icon/components";
           href="https://github.com/cavb1205"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Perfil de GitHub (abre en una pestaña nueva)"
+          aria-label={t("hero.github")}
           class="flex items-center justify-center w-10 h-10 rounded-full bg-dark-lighter text-gray-300 hover:text-primary transition-colors"
         >
           <Icon name="ri:github-fill" class="text-xl" aria-hidden="true" />
@@ -93,12 +100,9 @@ import { Icon } from "astro-icon/components";
 
     <!-- Sobre mí -->
     <div class="flex flex-col gap-4 items-center" data-reveal>
-      <h2 class="text-primary text-2xl font-bold text-center">Sobre mí</h2>
+      <h2 class="text-primary text-2xl font-bold text-center">{t("about.title")}</h2>
       <p class="text-gray-300 text-center max-w-2xl">
-        Soy un desarrollador frontend colombiano radicado en Chile, apasionado
-        por crear experiencias web que se vean bien y funcionen mejor. Trabajo de
-        cerca con cada cliente para entender su negocio y entregar soluciones a
-        medida, desde tiendas online hasta portafolios y aplicaciones a medida.
+        {t("about.body")}
       </p>
     </div>
   </div>

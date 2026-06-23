@@ -2,10 +2,15 @@
 import "../styles/global.css";
 import Analytics from '@vercel/analytics/astro'
 import Footer from "../components/Footer.astro";
+import { getLang } from "../i18n/ui";
+
 interface Props {
   title: string;
   description?: string;
 }
+
+const lang = getLang(Astro.currentLocale);
+const isEn = lang === "en";
 
 const {
   title,
@@ -15,6 +20,14 @@ const {
 const SITE_URL = "https://www.camilovaron.dev";
 const canonicalURL = new URL(Astro.url.pathname, SITE_URL).href;
 const ogImage = new URL("/images/foto-camilo-varon.webp", SITE_URL).href;
+const ogLocale = isEn ? "en_US" : "es_ES";
+const skipLabel = isEn ? "Skip to content" : "Saltar al contenido";
+
+const alternates = [
+  { hreflang: "es", href: `${SITE_URL}/` },
+  { hreflang: "en", href: `${SITE_URL}/en/` },
+  { hreflang: "x-default", href: `${SITE_URL}/` },
+];
 
 const personSchema = {
   "@context": "https://schema.org",
@@ -22,7 +35,7 @@ const personSchema = {
   name: "Camilo Andrés Varón",
   url: SITE_URL,
   image: ogImage,
-  jobTitle: "Desarrollador Frontend",
+  jobTitle: isEn ? "Frontend Developer" : "Desarrollador Frontend",
   email: "ing.camilo.varon@gmail.com",
   nationality: "Colombiana",
   homeLocation: { "@type": "Place", name: "Chile" },
@@ -35,7 +48,7 @@ const personSchema = {
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <script is:inline>
       // Habilita las animaciones de scroll solo si hay JS (evita contenido oculto sin JS).
@@ -46,13 +59,16 @@ const personSchema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
     <meta name="theme-color" content="#0F172A" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="Camilo Varón" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -80,7 +96,7 @@ const personSchema = {
       href="#inicio"
       class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-dark-darker focus:font-semibold"
     >
-      Saltar al contenido
+      {skipLabel}
     </a>
     <slot />
     <Footer />

@@ -1,0 +1,64 @@
+---
+import Header from "./Header.astro";
+import Skills from "./Skills.astro";
+import Nav from "./Nav.astro";
+import ProjectCard from "./ProjectCard.astro";
+import { Icon } from "astro-icon/components";
+import { projects } from "../data/projects";
+import { getLang, useTranslations } from "../i18n/ui";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<Nav />
+<main class="min-h-screen px-4 md:px-6 pb-28 md:pb-6">
+  <section id="inicio" class="py-8">
+    <Header />
+  </section>
+
+  <section id="habilidades" class="py-8" data-reveal>
+    <Skills />
+  </section>
+
+  <section id="proyectos" class="container mx-auto py-12">
+    <div class="text-center mb-10" data-reveal>
+      <h2 class="text-3xl font-bold text-primary mb-2">{t("projects.title")}</h2>
+      <p class="text-secondary">{t("projects.subtitle")}</p>
+    </div>
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          projects.map((project, i) => (
+            <div data-reveal class="h-full" style={`transition-delay: ${i * 90}ms`}>
+              <ProjectCard
+                title={project.title[lang]}
+                description={project.description[lang]}
+                image={project.image}
+                url={project.url}
+                github={project.github}
+                tags={project.tags}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="container mx-auto py-12">
+    <div class="text-center mb-10" data-reveal>
+      <h2 class="text-3xl font-bold text-primary mb-2">{t("contact.title")}</h2>
+      <p class="text-secondary">{t("contact.subtitle")}</p>
+    </div>
+    <div class="max-w-md mx-auto grid place-items-center" data-reveal>
+      <a
+        href="mailto:ing.camilo.varon@gmail.com"
+        class="flex items-center gap-2 text-accent hover:underline"
+      >
+        <Icon name="ri:mail-fill" class="text-2xl" aria-hidden="true" />
+        <span>ing.camilo.varon@gmail.com</span>
+      </a>
+    </div>
+  </section>
+</main>

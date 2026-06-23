@@ -1,54 +1,58 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLang, useTranslations } from "../i18n/ui";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 
 const navItems = [
-  {
-    name: "Inicio",
-    url: "#inicio",
-    icon: "ri:home-4-line"
-  },
-  {
-    name: "Habilidades",
-    url: "#habilidades",
-    icon: "ri:code-box-line"
-  },
-  {
-    name: "Proyectos",
-    url: "#proyectos",
-    icon: "ri:folder-chart-line"
-  },
-  {
-    name: "Contacto",
-    url: "#contacto",
-    icon: "ri:mail-line"
-  }
+  { name: t("nav.inicio"), url: "#inicio", icon: "ri:home-4-line" },
+  { name: t("nav.habilidades"), url: "#habilidades", icon: "ri:code-box-line" },
+  { name: t("nav.proyectos"), url: "#proyectos", icon: "ri:folder-chart-line" },
+  { name: t("nav.contacto"), url: "#contacto", icon: "ri:mail-line" },
 ];
+
+const isEn = lang === "en";
+const switchHref = isEn ? "/" : "/en/";
+const switchLabel = isEn ? "ES" : "EN";
 ---
 
 <nav
   class="sticky top-0 w-full bg-dark-lighter/90 backdrop-blur-md z-50 shadow-md"
-  aria-label="Navegación principal"
+  aria-label={t("nav.label")}
 >
   <div class="container mx-auto py-3 px-4">
     <div class="flex justify-between items-center">
       <!-- Logo/Nombre -->
-      <a href="#inicio" class="flex items-center gap-2" aria-label="Ir al inicio">
+      <a href="#inicio" class="flex items-center gap-2" aria-label={t("nav.gotoHome")}>
         <span class="text-primary font-bold text-xl">CV</span>
         <span class="hidden sm:block text-white">Camilo Varón</span>
       </a>
 
-      <!-- Navegación desktop -->
-      <div class="hidden md:flex gap-6">
-        {navItems.map((item) => (
-          <a
-            href={item.url}
-            data-nav-link
-            class="flex items-center gap-1.5 text-gray-300 hover:text-primary transition-colors duration-300"
-          >
-            <Icon name={item.icon} class="text-primary text-base" aria-hidden="true" />
-            <span>{item.name}</span>
-          </a>
-        ))}
+      <div class="flex items-center gap-4 md:gap-6">
+        <!-- Navegación desktop -->
+        <div class="hidden md:flex gap-6">
+          {navItems.map((item) => (
+            <a
+              href={item.url}
+              data-nav-link
+              class="flex items-center gap-1.5 text-gray-300 hover:text-primary transition-colors duration-300"
+            >
+              <Icon name={item.icon} class="text-primary text-base" aria-hidden="true" />
+              <span>{item.name}</span>
+            </a>
+          ))}
+        </div>
+
+        <!-- Selector de idioma -->
+        <a
+          href={switchHref}
+          aria-label={t("nav.langAria")}
+          class="flex items-center gap-1 rounded-full border border-gray-700/60 px-3 py-1 text-xs font-semibold text-gray-300 hover:text-primary hover:border-primary/50 transition-colors"
+        >
+          <Icon name="ri:translate-2" class="text-sm" aria-hidden="true" />
+          {switchLabel}
+        </a>
       </div>
     </div>
   </div>
@@ -57,7 +61,7 @@ const navItems = [
 <!-- Navegación móvil -->
 <nav
   class="md:hidden flex justify-between w-full max-w-[90%] sm:max-w-xs mx-auto fixed bottom-4 left-0 right-0 bg-dark-lighter px-4 py-3 rounded-full shadow-lg border border-gray-800/50 z-50"
-  aria-label="Navegación principal"
+  aria-label={t("nav.label")}
 >
   {navItems.map((item) => (
     <a
