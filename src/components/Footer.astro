@@ -1,21 +1,23 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const currentYear = new Date().getFullYear();
 
 const socialLinks = [
   {
     name: "GitHub",
-    url: "https://github.com/camilovaron",
-    icon: "ri-github-fill"
+    url: "https://github.com/cavb1205",
+    icon: "ri:github-fill"
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/camilovaron/",
-    icon: "ri-linkedin-box-fill"
+    icon: "ri:linkedin-box-fill"
   },
   {
     name: "Email",
     url: "mailto:ing.camilo.varon@gmail.com",
-    icon: "ri-mail-fill"
+    icon: "ri:mail-fill"
   }
 ];
 ---
@@ -42,9 +44,9 @@ const socialLinks = [
             target="_blank" 
             rel="noopener noreferrer" 
             class="flex items-center justify-center w-10 h-10 bg-dark-lighter rounded-full text-gray-300 hover:text-primary hover:bg-opacity-80 transition-colors"
-            aria-label={link.name}
+            aria-label={`${link.name} (abre en una pestaña nueva)`}
           >
-            <i class={`${link.icon} text-xl`}></i>
+            <Icon name={link.icon} class="text-xl" aria-hidden="true" />
           </a>
         ))}
       </div>
@@ -52,8 +54,8 @@ const socialLinks = [
     
     <!-- Mensaje adicional -->
     <div class="mt-6 text-center">
-      <p class="text-gray-500 text-xs">
-        Desarrollado con <i class="ri-heart-fill text-red-500"></i> usando Astro y Tailwind CSS
+      <p class="text-gray-400 text-xs">
+        Desarrollado con <Icon name="ri:heart-fill" class="inline text-red-500 align-middle" aria-label="amor" /> usando Astro y Tailwind CSS
       </p>
     </div>
   </div>

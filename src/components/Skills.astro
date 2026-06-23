@@ -1,71 +1,73 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const skills = [
   {
     name: "React",
     color: "bg-blue-500",
     textColor: "text-white",
-    icon: "ri-reactjs-fill",
+    icon: "ri:reactjs-fill",
   },
   {
     name: "Next.js",
     color: "bg-gray-900",
     textColor: "text-white",
-    icon: "ri-code-s-slash-line",
+    icon: "ri:code-s-slash-line",
   },
   {
     name: "Astro",
     color: "bg-purple-600",
     textColor: "text-white",
-    icon: "ri-rocket-fill",
+    icon: "ri:rocket-fill",
   },
   {
     name: "JavaScript",
     color: "bg-yellow-400",
     textColor: "text-gray-900",
-    icon: "ri-javascript-fill",
+    icon: "ri:javascript-fill",
   },
 
   {
     name: "WordPress",
     color: "bg-blue-600",
     textColor: "text-white",
-    icon: "ri-wordpress-fill",
+    icon: "ri:wordpress-fill",
   },
   {
     name: "Git",
     color: "bg-orange-600",
     textColor: "text-white",
-    icon: "ri-git-branch-fill",
+    icon: "ri:git-branch-fill",
   },
   {
     name: "Python",
     color: "bg-blue-700",
     textColor: "text-white",
-    icon: "ri-terminal-box-fill",
+    icon: "ri:terminal-box-fill",
   },
   {
     name: "Django",
     color: "bg-green-700",
     textColor: "text-white",
-    icon: "ri-server-fill",
+    icon: "ri:server-fill",
   },
   {
     name: "Django REST",
     color: "bg-red-700",
     textColor: "text-white",
-    icon: "ri-database-2-fill",
+    icon: "ri:database-2-fill",
   },
   {
     name: "Tailwind CSS",
     color: "bg-sky-500",
     textColor: "text-white",
-    icon: "ri-palette-fill",
+    icon: "ri:palette-fill",
   },
   {
     name: "React Native",
     color: "bg-blue-500",
     textColor: "text-white",
-    icon: "ri-reactjs-fill",
+    icon: "ri:reactjs-fill",
   },
 ];
 ---
@@ -85,8 +87,10 @@ const skills = [
           <div
             class={`${skill.color} p-1 md:p-1 rounded-lg shadow-lg flex flex-row items-center justify-center gap-1 md:gap-2 h-full border border-gray-700/30 backdrop-blur-sm`}
           >
-            <i
-              class={`${skill.icon} ${skill.textColor} text-base md:text-base`}
+            <Icon
+              name={skill.icon}
+              class={`${skill.textColor} text-base`}
+              aria-hidden="true"
             />
             <span
               class={`${skill.textColor} font-medium text-center text-sm md:text-sm`}
@@ -99,9 +103,3 @@ const skills = [
     }
   </div>
 </div>
-
-<!-- Añadir iconos de Remix Icon -->
-<link
-  href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-  rel="stylesheet"
-/>

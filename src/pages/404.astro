@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout
+  title="Página no encontrada | Camilo Varón"
+  description="La página que buscas no existe o fue movida."
+>
+  <main
+    class="min-h-screen flex flex-col items-center justify-center text-center px-4 gap-6"
+  >
+    <Icon name="ri:compass-3-line" class="text-primary text-6xl" aria-hidden="true" />
+
+    <div class="flex flex-col gap-2">
+      <p class="text-primary text-7xl md:text-8xl font-bold">404</p>
+      <h1 class="text-2xl md:text-3xl font-bold text-white">
+        Página no encontrada
+      </h1>
+      <p class="text-gray-400 max-w-md mx-auto">
+        Lo siento, la página que buscas no existe o fue movida.
+      </p>
+    </div>
+
+    <a
+      href="/"
+      class="inline-flex items-center justify-center gap-2 bg-primary text-dark-darker font-semibold py-3 px-6 rounded-md hover:bg-opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary/20"
+    >
+      <Icon name="ri:home-4-line" class="text-lg" aria-hidden="true" />
+      Volver al inicio
+    </a>
+  </main>
+</Layout>

@@ -4,31 +4,37 @@ import Header from "../components/Header.astro";
 import Skills from "../components/Skills.astro";
 import Nav from "../components/Nav.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import { Icon } from "astro-icon/components";
+
+import rosapastell from "../assets/projects/rosapastell.webp";
+import divastore from "../assets/projects/divastore.webp";
+import stefyfood from "../assets/projects/stefyfood.webp";
+import rigaproyectos from "../assets/projects/rigaproyectos.webp";
 
 const projects = [
   {
     title: "E-commerce RosaPastell",
     description:
-      "Tienda online para la venta de pijamas creada con Woocomerce.",
-    image: "/images/projects/rosapastell.webp",
+      "Tienda online para la venta de pijamas creada con WooCommerce.",
+    image: rosapastell,
     url: "https://www.rosapastell.com/",
     github: "#",
-    tags: ["Wordpress", "WooCommerce", "Postgres", "Digital Ocean"],
+    tags: ["WordPress", "WooCommerce", "MySQL", "Digital Ocean"],
   },
   {
     title: "E-commerce DivaStore",
     description:
       "Frontend de un e-commerce creado con Next.js, TailwindCSS y API REST.",
-    image: "/images/projects/divastore.webp",
+    image: divastore,
     url: "https://www.divastore.cl/",
     github: "https://github.com/cavb1205/ecomerce-next",
     tags: ["React", "Next.js", "TailwindCSS", "API REST", "Vercel"],
   },
   {
-    title: "Menu Comida Online",
+    title: "Menú Comida Online",
     description:
-      "Aplicación web en astro para mostrar el menu de un restaurante.",
-    image: "/images/projects/stefyfood.webp",
+      "Aplicación web en Astro para mostrar el menú de un restaurante.",
+    image: stefyfood,
     url: "https://stefyfood.vercel.app/",
     github: "https://github.com/cavb1205/carta-online",
     tags: ["Astro", "Vercel", "API REST"],
@@ -36,8 +42,8 @@ const projects = [
   {
     title: "Riga Proyectos",
     description:
-      "Portafolio web en astro para empresa de arquitectura y construcción en Bogotá - Colombia",
-    image: "/images/projects/rigaproyectos.webp",
+      "Portafolio web en Astro para empresa de arquitectura y construcción en Bogotá, Colombia.",
+    image: rigaproyectos,
     url: "https://www.rigaproyectos.com/",
     github: "https://github.com/cavb1205/rigaproyectos",
     tags: ["Astro", "Vercel", "API REST"],
@@ -47,32 +53,38 @@ const projects = [
 
 <Layout title="Camilo Varon | Desarrollador Frontend">
   <Nav />
-  <main class="min-h-screen px-4 md:px-6">
+  <main class="min-h-screen px-4 md:px-6 pb-28 md:pb-6">
     <section id="inicio" class="py-8">
       <Header />
     </section>
 
-    <section id="habilidades" class="py-8">
+    <section id="habilidades" class="py-8" data-reveal>
       <Skills />
     </section>
 
     <section id="proyectos" class="container mx-auto py-12">
-      <div class="text-center mb-10">
+      <div class="text-center mb-10" data-reveal>
         <h2 class="text-3xl font-bold text-primary mb-2">Mis Proyectos</h2>
         <p class="text-secondary">Explora algunos de mis trabajos recientes</p>
       </div>
       <div class="max-w-5xl mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {
-            projects.map((project) => (
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                image={project.image}
-                url={project.url}
-                github={project.github}
-                tags={project.tags}
-              />
+            projects.map((project, i) => (
+              <div
+                data-reveal
+                class="h-full"
+                style={`transition-delay: ${i * 90}ms`}
+              >
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  image={project.image}
+                  url={project.url}
+                  github={project.github}
+                  tags={project.tags}
+                />
+              </div>
             ))
           }
         </div>
@@ -80,18 +92,18 @@ const projects = [
     </section>
 
     <section id="contacto" class="container mx-auto py-12">
-      <div class="text-center mb-10">
+      <div class="text-center mb-10" data-reveal>
         <h2 class="text-3xl font-bold text-primary mb-2">Contacto</h2>
         <p class="text-secondary">
           ¿Interesado en trabajar juntos? ¡Contáctame!
         </p>
       </div>
-      <div class="max-w-md mx-auto grid place-items-center">
+      <div class="max-w-md mx-auto grid place-items-center" data-reveal>
         <a
           href="mailto:ing.camilo.varon@gmail.com"
           class="flex items-center gap-2 text-accent hover:underline"
         >
-          <i class="ri-mail-fill text-2xl"></i>
+          <Icon name="ri:mail-fill" class="text-2xl" aria-hidden="true" />
           <span>ing.camilo.varon@gmail.com</span>
         </a>
       </div>

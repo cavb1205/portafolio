@@ -1,39 +1,105 @@
-<section class="container mx-auto grid place-items-center py-8">
-  <div class="grid grid-cols-1 gap-8 w-full max-w-4xl">
-    <div class="flex flex-col gap-4 justify-center items-center">
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section
+  class="container relative mx-auto grid place-items-center py-8 overflow-hidden"
+>
+  <!-- Glow decorativo de fondo -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-primary/20 blur-3xl"
+  >
+  </div>
+
+  <div class="relative grid grid-cols-1 gap-8 w-full max-w-4xl">
+    <!-- Hero -->
+    <div class="flex flex-col gap-5 justify-center items-center text-center">
       <div class="p-1 bg-dark-lighter rounded-full shadow-md">
         <img
           src="/images/foto-camilo-varon.webp"
-          alt="Camilo Varon"
+          alt="Retrato de Camilo Varón, desarrollador frontend"
+          width="160"
+          height="160"
+          fetchpriority="high"
           class="w-40 h-40 rounded-full object-cover border-2 border-dark-darker shadow-inner hover:scale-[1.02] transition-transform duration-300"
         />
       </div>
-      <h1 class="text-primary text-4xl font-bold text-center">
-        Camilo Andrés Varón
-      </h1>
-      <span class="text-secondary text-sm text-center">
-        Frontend Developer 🇨🇴
-      </span>
+
+      <div class="flex flex-col gap-2">
+        <h1 class="text-primary text-4xl md:text-5xl font-bold">
+          Camilo Andrés Varón
+        </h1>
+        <p class="text-secondary text-sm md:text-base">
+          Desarrollador Frontend · 📍 Chile
+        </p>
+      </div>
+
+      <!-- Propuesta de valor -->
+      <p class="text-gray-200 text-lg md:text-xl max-w-2xl text-balance">
+        Construyo <span class="text-accent font-semibold">tiendas online</span> y
+        <span class="text-accent font-semibold">aplicaciones web rápidas</span> con
+        <span class="text-primary font-semibold">React</span>,
+        <span class="text-primary font-semibold">Next.js</span> y
+        <span class="text-primary font-semibold">Astro</span>.
+      </p>
+      <p class="text-gray-400 max-w-xl">
+        Transformo ideas en productos digitales cuidados, accesibles y listos
+        para vender.
+      </p>
+
+      <!-- CTAs -->
+      <div
+        class="flex flex-col sm:flex-row gap-3 w-full max-w-md justify-center mt-2"
+      >
+        <a
+          href="#contacto"
+          class="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-dark-darker font-semibold py-3 px-6 rounded-md hover:bg-opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary/20"
+        >
+          <Icon name="ri:chat-smile-3-line" class="text-lg" aria-hidden="true" />
+          Hablemos de tu proyecto
+        </a>
+        <a
+          href="#proyectos"
+          class="flex-1 inline-flex items-center justify-center gap-2 border border-primary/50 text-primary font-semibold py-3 px-6 rounded-md hover:bg-primary/10 transition-all hover:-translate-y-1"
+        >
+          <Icon name="ri:folder-chart-line" class="text-lg" aria-hidden="true" />
+          Ver proyectos
+        </a>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="flex items-center gap-3 mt-1">
+        <a
+          href="https://www.linkedin.com/in/camilovaron/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Perfil de LinkedIn (abre en una pestaña nueva)"
+          class="flex items-center justify-center w-10 h-10 rounded-full bg-dark-lighter text-gray-300 hover:text-primary transition-colors"
+        >
+          <Icon name="ri:linkedin-box-fill" class="text-xl" aria-hidden="true" />
+        </a>
+        <a
+          href="https://github.com/cavb1205"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Perfil de GitHub (abre en una pestaña nueva)"
+          class="flex items-center justify-center w-10 h-10 rounded-full bg-dark-lighter text-gray-300 hover:text-primary transition-colors"
+        >
+          <Icon name="ri:github-fill" class="text-xl" aria-hidden="true" />
+        </a>
+      </div>
     </div>
 
-    <div class="flex flex-col gap-4 items-center">
-      <h2 class="text-primary text-2xl font-bold text-center">Sobre mi</h2>
+    <!-- Sobre mí -->
+    <div class="flex flex-col gap-4 items-center" data-reveal>
+      <h2 class="text-primary text-2xl font-bold text-center">Sobre mí</h2>
       <p class="text-gray-300 text-center max-w-2xl">
-        Soy un desarrollador frontend Colombiano que actualmente vive en Chile.
-        Me apasiona la tecnología y la programación.
+        Soy un desarrollador frontend colombiano radicado en Chile, apasionado
+        por crear experiencias web que se vean bien y funcionen mejor. Trabajo de
+        cerca con cada cliente para entender su negocio y entregar soluciones a
+        medida, desde tiendas online hasta portafolios y aplicaciones a medida.
       </p>
-      <div class="flex justify-center gap-4 my-4 w-full max-w-xs">
-        <a
-          class="flex-1 text-dark-darker font-semibold text-center bg-primary py-2 px-4 rounded-md hover:bg-opacity-90 transition-all hover:-translate-y-1"
-          href="https://www.linkedin.com/in/camilovaron/"
-          target="_blank">Linkedin</a
-        >
-        <a
-          class="flex-1 text-dark-darker font-semibold text-center bg-accent py-2 px-4 rounded-md hover:bg-opacity-90 transition-all hover:-translate-y-1"
-          href="https://github.com/cavb1205"
-          target="_blank">Github</a
-        >
-      </div>
     </div>
   </div>
 </section>
